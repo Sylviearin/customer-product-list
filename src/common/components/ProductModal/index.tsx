@@ -163,7 +163,7 @@ export const ProductModal: React.FC<Props> = ({show, handleClose, item}) => {
                                     onChange={handleWeight}
                                     placeholder="Enter product weight..."
                                     className="form-control"
-                                    pattern="^[\d]${0,9}+\.(?:g|kg)$"
+                                    pattern="/^[\d]${0,9}+\.(?:g|kg)$/"
                                 />
                             </div>
                         </div>

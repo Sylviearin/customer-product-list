@@ -49,7 +49,7 @@ export const DetailedItem: React.FC<Props> = ({item}) => {
                 {comments.length > 0
                     ? comments.map(item => (
                         <CommentItem
-                            key={item.productId.toString() + item.id.toString()}
+                            key={item.id.toString()}
                             item={item}
                         />
                     ))

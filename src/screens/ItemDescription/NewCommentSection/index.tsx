@@ -66,8 +66,6 @@ export const CommentSection: React.FC<Props> = ({item}) => {
     const handleSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
 
-        const id = generateUniqueId(); // Generate unique ID
-
         const today = new Date();
         let month: string = formatDate(today.getMonth() + 1),
             hours: string = formatDate(today.getHours()),
@@ -78,11 +76,12 @@ export const CommentSection: React.FC<Props> = ({item}) => {
         // Create payload for new Comment
         const comment: Comment = {
             productId: item.id,
-            id,
+            id: generateUniqueId(),
             date: formattedDate,
             description: userComment
         }
 
+        console.log(generateUniqueId())
         dispatch(productsAddComment({
             productId: item.id,
             comment
@@ -98,6 +97,7 @@ export const CommentSection: React.FC<Props> = ({item}) => {
                         <div className="col-lg-12">
                             <label htmlFor="new-comment" className="form-label">Create comment</label>
                             <input
+                                required
                                 id="new-comment"
                                 type="text"
                                 placeholder="Enter your comment..."

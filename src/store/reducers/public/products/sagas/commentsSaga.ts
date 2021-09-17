@@ -10,18 +10,16 @@ import {PRODUCTS_ADD_COMMENT, PRODUCTS_DELETE_COMMENT} from "../constants";
 
 function* commentsAddSaga(action: ProductsAddComment) {
     try {
-        let payload: Product[] = yield select( (state: RootState): Product[] =>
-            state.public.products.list.map((item: Product): Product => {
-                const {productId, comment} = action.payload;
-                if (item.id === productId) {
-                    item.comments.push(comment)
-                    return item
-                } else {
-                    return item
-                }
-
-            })
-        );
+        const {productId, comment} = action.payload;
+        let payload: Product[] = yield select( (state: RootState): Product[] => state.public.products.list);
+        payload = payload.map((item: Product): Product => {
+            if (item.id === productId) {
+                item.comments.push(comment)
+                return item
+            } else {
+                return item
+            }
+        })
         yield localStorage.setItem(storageData, JSON.stringify(payload));
         yield put(productsFetch());
 
