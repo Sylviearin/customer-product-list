@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: inherit;
+  outline: none !important;
+  list-style: none !important;
+  text-decoration: none !important;
+}
+
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+html {
+  min-height: 100%;
+  background: linear-gradient(
+    146deg,
+    hsla(184.16, 94.39%, 58.04%, 0.66) 0%,
+    hsla(184.72, 94.28%, 59.41%, 0.664) 8.1%,
+    hsla(186.41, 94.02%, 62.58%, 0.677) 15.5%,
+    hsla(189.42, 93.73%, 66.4%, 0.695) 22.5%,
+    hsla(194.11, 93.47%, 70.37%, 0.72) 29%,
+    hsla(201.07, 93.25%, 74.28%, 0.748) 35.3%,
+    hsla(211.18, 93.09%, 78.02%, 0.78) 41.2%,
+    hsla(225.76, 93.03%, 81.53%, 0.813) 47.1%,
+    hsla(246.13, 93.75%, 83.16%, 0.847) 52.9%,
+    hsla(263.06, 95.78%, 80.54%, 0.88) 58.8%,
+    hsla(274.7, 97.27%, 77.83%, 0.912) 64.7%,
+    hsla(282.68, 98.36%, 75.11%, 0.94) 71%,
+    hsla(288.06, 99.12%, 72.51%, 0.965) 77.5%,
+    hsla(291.52, 99.62%, 70.26%, 0.983) 84.5%,
+    hsla(293.47, 99.91%, 68.65%, 0.996) 91.9%,
+    hsl(294.11, 100%, 68.04%) 100%
+  ) no-repeat;
+
+}
+
+html body {
+
+  background-color: inherit;
+  font-family: "Poppins", ysans-std, sans-serif;
+
+}
+
+.c-pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,10 @@
+.sort-by-count,
+.sort-by-name {
+  transition: .4s;
+  display: inline-block;
+}
+
+.rotate {
+  transition: .4s;
+  transform: rotateX(180deg);
+}

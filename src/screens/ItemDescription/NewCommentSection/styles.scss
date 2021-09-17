@@ -1,0 +1,9 @@
+.new-comment-wrapper {
+  border-radius: 5px;
+  box-shadow: 0 0 100px 0 #00000054;
+  background: rgba(255, 255, 255, .40);
+  margin-bottom: 50px;
+  .error-text {
+    color: red;
+  }
+}
