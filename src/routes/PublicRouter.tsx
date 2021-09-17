@@ -20,7 +20,7 @@ export const PublicRouter: React.FC = () => {
 
     return (
 
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/product" component={ItemDescription} />
