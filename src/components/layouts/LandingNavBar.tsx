@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-export const Header: React.FC = () => {
+export const LandingNavBar: React.FC = () => {
 
     return (
         <nav id="navbar" className="navbar-wrapper">

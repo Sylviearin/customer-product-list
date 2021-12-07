@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {Header} from "../../components/Header";
 import {Navigate} from "react-router-dom";
-import {DetailedProductItem} from "../../components/products/DetailedProductItem";
-import {productsDeleteActive} from "../../store/reducers/public/products";
-import {Product} from "../../models/Product";
-import {useAppSelector} from "../../hooks/useAppSelector";
-import {useAppDispatch} from "../../hooks/useAppDispatch";
+import {DetailedProductItem} from "../components/products/DetailedProductItem";
+import {productsDeleteActive} from "../store/reducers/public/products";
+import {Product} from "../models/Product";
+import {useAppSelector} from "../hooks/useAppSelector";
+import {useAppDispatch} from "../hooks/useAppDispatch";
 
 
 export const ProductItemView: React.FC = () => {
@@ -35,7 +34,6 @@ export const ProductItemView: React.FC = () => {
 
     return (
         <div>
-            <Header />
             <div className="container">
                 <div className="row justify-content-center">
                     {data && active && activeItem
