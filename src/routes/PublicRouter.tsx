@@ -1,6 +1,6 @@
 //Base imports
 import React, {useEffect} from 'react';
-import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
+import {Route, Routes, BrowserRouter, Navigate} from 'react-router-dom';
 import {productsFetch} from "../store/reducers/public/products";
 import {useDispatch} from "react-redux";
 
@@ -21,13 +21,14 @@ export const PublicRouter: React.FC = () => {
     return (
 
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/product" component={ItemDescription} />
+            <Routes>
 
-                <Route path="**"><Redirect to="/"/></Route>
+                <Route path="/" element={<Home />} />
+                <Route path="/product" element={<ItemDescription />} />
 
-            </Switch>
+                <Route path="**"><Navigate to="/"/></Route>
+
+            </Routes>
         </BrowserRouter>
     )
 }
