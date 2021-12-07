@@ -1,24 +1,20 @@
 import {put, select, takeLatest, takeEvery} from 'redux-saga/effects';
 import {PRODUCTS_ADD, PRODUCTS_EDIT, PRODUCTS_FETCH, PRODUCTS_REMOVE} from '../constants';
 import {ProductsAdd, productsData, productsError, ProductsFetch, productsFetch, ProductsRemove} from "../actions";
-import {mockData, storageData} from "../../../../../utilities/constants";
+import { storageData} from "../../../../../utilities/constants";
 import {Product} from "../../../../../models/Product";
 import {CommonError} from "../../../../../models/CommonError";
 import {RootState} from "../../../../store";
-
+import { get, child, ref } from "firebase/database";
+import {db} from "../../../../../firebase";
 
 function* productsSaga(action: ProductsFetch) {
+
     try {
-        let data: string = yield localStorage.getItem('productData');
-        let payload: Product[] = JSON.parse(data);
-
-        if (payload === null) {
-            localStorage.setItem(storageData, JSON.stringify(mockData));
-            payload = mockData;
-            yield put(productsData(payload));
-        }
-        yield put(productsData(payload));
-
+        const dbRef: any = ref(db);
+        console.log('dbRef', dbRef)
+        let data: Product[] = yield get(child(dbRef, `/products`)).then(data => data.val());
+        yield put(productsData(data))
     } catch (error: any) {
         let e: CommonError = error.response;
         yield put(productsError(e));
