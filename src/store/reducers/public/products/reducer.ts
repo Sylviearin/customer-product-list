@@ -1,4 +1,4 @@
-import {CommonError} from '../../types';
+
 import {ProductsAction} from './actions';
 import {
     PRODUCTS_ADD,
@@ -10,10 +10,10 @@ import {
     PRODUCTS_FETCH,
     PRODUCTS_REMOVE,
     PRODUCTS_SET_ACTIVE,
-    PRODUCTS_SORT_BY_COUNT,
-    PRODUCTS_SORT_BY_NAME
+    PRODUCTS_SORT,
 } from './constants';
-import {Product} from './types';
+import {CommonError} from "../../../../models/CommonError";
+import {Product} from "../../../../models/Product";
 
 
 export interface ProductsState {
@@ -67,51 +67,30 @@ export const productsReducer = (state = initialProductsState, action: ProductsAc
                 loading: true,
             }
 
+        case PRODUCTS_SORT:
+            const { by, toggle } = action.payload;
+            return {
+                ...state,
+                list: [...state.list.sort((a, b) => {
+                    if (a[by] > b[by]) {
+                        if (toggle) {
+                            return -1;
+                        }
+                        return 1;
+                    }
+
+                    if (a[by] < b[by]) {
+                        if (toggle) {
+                            return 1;
+                        }
+                        return -1;
+                    }
+
+                    return 0;
+                })]
+            }
         case PRODUCTS_ADD:
         case PRODUCTS_EDIT:
-        case PRODUCTS_SORT_BY_COUNT:
-            return {
-                ...state,
-                list: [...state.list.sort((a, b) => {
-                    if (a.count > b.count) {
-                        if (action.payload) {
-                            return -1;
-                        }
-                        return 1;
-                    }
-
-                    if (a.count < b.count) {
-                        if (action.payload) {
-                            return 1;
-                        }
-                        return -1;
-                    }
-
-                    return 0;
-                })]
-            }
-        case PRODUCTS_SORT_BY_NAME:
-            return {
-                ...state,
-                list: [...state.list.sort((a, b) => {
-                    if (a.name > b.name) {
-                        if (action.payload) {
-                            return -1;
-                        }
-                        return 1;
-                    }
-
-                    if (a.name < b.name) {
-                        if (action.payload) {
-                            return 1;
-                        }
-                        return -1;
-                    }
-
-                    return 0;
-                })]
-            }
-
         case PRODUCTS_ADD_COMMENT:
         case PRODUCTS_DELETE_COMMENT:
         default:

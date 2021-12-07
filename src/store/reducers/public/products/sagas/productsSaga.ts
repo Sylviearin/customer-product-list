@@ -1,10 +1,11 @@
 import {put, select, takeLatest, takeEvery} from 'redux-saga/effects';
 import {PRODUCTS_ADD, PRODUCTS_EDIT, PRODUCTS_FETCH, PRODUCTS_REMOVE} from '../constants';
 import {ProductsAdd, productsData, productsError, ProductsFetch, productsFetch, ProductsRemove} from "../actions";
-import {Product} from "../types";
-import {RootState} from "../../../index";
-import {mockData, storageData} from "../../../../../common/constants";
-import {CommonError} from "../../../types";
+import {mockData, storageData} from "../../../../../utilities/constants";
+import {Product} from "../../../../../models/Product";
+import {CommonError} from "../../../../../models/CommonError";
+import {RootState} from "../../../../store";
+
 
 function* productsSaga(action: ProductsFetch) {
     try {

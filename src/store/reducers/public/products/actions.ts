@@ -1,4 +1,4 @@
-import {CommonError} from '../../types';
+
 import {
     PRODUCTS_ADD,
     PRODUCTS_ADD_COMMENT,
@@ -8,10 +8,12 @@ import {
     PRODUCTS_FETCH,
     PRODUCTS_REMOVE,
     PRODUCTS_SET_ACTIVE,
-    PRODUCTS_SORT_BY_COUNT,
-    PRODUCTS_SORT_BY_NAME
+    PRODUCTS_SORT,
 } from './constants';
-import {Comment, Product,} from './types';
+import {Product} from "../../../../models/Product";
+import {IComment} from "../../../../models/IComment";
+import {CommonError} from "../../../../models/CommonError";
+import {ProductSortKeys} from "../../../../models/ProductSortKeys";
 
 
 export interface ProductsFetch {
@@ -42,21 +44,19 @@ export interface ProductsRemove {
     payload: number;
 }
 
-export interface ProductsSortByCount {
-    type: typeof PRODUCTS_SORT_BY_COUNT;
-    payload: boolean;
-}
-
-export interface ProductsSortByName {
-    type: typeof PRODUCTS_SORT_BY_NAME;
-    payload: boolean;
+export interface ProductsSort {
+    type: typeof PRODUCTS_SORT;
+    payload: {
+        by: ProductSortKeys;
+        toggle: boolean;
+    };
 }
 
 export interface ProductsAddComment {
     type: typeof PRODUCTS_ADD_COMMENT;
     payload: {
       productId: number,
-      comment: Comment,
+      comment: IComment,
     };
 }
 
@@ -84,12 +84,11 @@ export type ProductsAction = ProductsFetch
     | ProductsSetActive
     | ProductsDeleteActive
     | ProductsRemove
-    | ProductsSortByCount
-    | ProductsSortByName
     | ProductsAddComment
     | ProductsDeleteComment
     | ProductsAdd
     | ProductsEdit
+    | ProductsSort
 
 
 export const productsFetch = (): ProductsFetch => ({
@@ -120,15 +119,11 @@ export const productsRemove = (payload: number): ProductsRemove => ({
     payload
 });
 
-export const productsSortByCount = (payload: boolean): ProductsSortByCount => ({
-    type: PRODUCTS_SORT_BY_COUNT,
+export const productsSortByCount = (payload: ProductsSort['payload']): ProductsSort => ({
+    type: PRODUCTS_SORT,
     payload
 });
 
-export const productsSortByName = (payload: boolean): ProductsSortByName => ({
-    type: PRODUCTS_SORT_BY_NAME,
-    payload
-});
 
 export const productsAddComment = (payload: ProductsAddComment['payload']): ProductsAddComment => ({
     type: PRODUCTS_ADD_COMMENT,

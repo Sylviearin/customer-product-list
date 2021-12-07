@@ -1,11 +1,10 @@
 import {put, select, takeLatest} from 'redux-saga/effects';
 import {ProductsAddComment, ProductsDeleteComment, productsError, productsFetch} from '../actions';
-import {Product} from "../types";
-import {CommonError} from "../../../types";
-import {RootState} from "../../../index";
-import {storageData} from "../../../../../common/constants";
+import {storageData} from "../../../../../utilities/constants";
 import {PRODUCTS_ADD_COMMENT, PRODUCTS_DELETE_COMMENT} from "../constants";
-
+import {Product} from "../../../../../models/Product";
+import {RootState} from "../../../../store";
+import {CommonError} from "../../../../../models/CommonError";
 
 
 function* commentsAddSaga(action: ProductsAddComment) {
@@ -24,7 +23,6 @@ function* commentsAddSaga(action: ProductsAddComment) {
         yield put(productsFetch());
 
     } catch (error: any) {
-        console.log(error)
         let e: CommonError = error.response;
         yield put(productsError(e));
 

@@ -1,14 +1,9 @@
 import { combineReducers } from "redux";
 import {all, call} from "redux-saga/effects";
 
-import {productsReducer, ProductsState, rootProductsSaga} from "./public/products";
+import {productsReducer, rootProductsSaga} from "./public/products";
 import {rootCommentsSaga} from "./public/products/sagas/commentsSaga";
 
-export interface RootState {
-    public: {
-        products: ProductsState;
-    }
-}
 
 
 export const publicReducer = combineReducers({
