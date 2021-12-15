@@ -46,3 +46,4 @@ export const ProductItemView: React.FC = () => {
         </div>
     )
 }
+export default ProductItemView;

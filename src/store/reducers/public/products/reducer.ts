@@ -14,11 +14,12 @@ import {
 } from './constants';
 import {CommonError} from "../../../../models/CommonError";
 import {Product} from "../../../../models/Product";
+import {State, API_ERROR, API_INITIAL, API_LOADING, API_SUCCESS} from "../../../../API/state";
 
 
 export interface ProductsState {
     list: Product[];
-    loading: boolean;
+    loading: State;
     active: null | number;
     error?: CommonError;
 }
@@ -26,7 +27,7 @@ export interface ProductsState {
 export const initialProductsState: ProductsState = {
     list: [],
     active: null,
-    loading: false,
+    loading: API_INITIAL,
 
 };
 
@@ -35,12 +36,12 @@ export const productsReducer = (state = initialProductsState, action: ProductsAc
         case PRODUCTS_FETCH:
             return {
                 ...state,
-                loading: true,
+                loading: API_LOADING,
             };
         case PRODUCTS_DATA: {
             return {
                 ...state,
-                loading: false,
+                loading: API_SUCCESS,
                 list: action.payload,
             };
         }
@@ -48,7 +49,7 @@ export const productsReducer = (state = initialProductsState, action: ProductsAc
         case PRODUCTS_ERROR:
             return {
                 ...state,
-                loading: false,
+                loading: API_ERROR,
                 error: action.error,
             };
         case PRODUCTS_SET_ACTIVE:
@@ -64,7 +65,7 @@ export const productsReducer = (state = initialProductsState, action: ProductsAc
         case PRODUCTS_REMOVE:
             return {
                 ...state,
-                loading: true,
+                loading: API_LOADING,
             }
 
         case PRODUCTS_SORT:

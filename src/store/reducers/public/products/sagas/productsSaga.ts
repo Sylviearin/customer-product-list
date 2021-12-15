@@ -12,7 +12,6 @@ function* productsSaga(action: ProductsFetch) {
 
     try {
         const dbRef: any = ref(db);
-        console.log('dbRef', dbRef)
         let data: Product[] = yield get(child(dbRef, `/products`)).then(data => data.val());
         yield put(productsData(data))
     } catch (error: any) {

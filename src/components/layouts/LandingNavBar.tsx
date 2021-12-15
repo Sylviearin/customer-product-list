@@ -1,17 +1,26 @@
 //Base imports
+import { Button } from '@mui/material';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {NavLink} from "react-router-dom";
 
 
 export const LandingNavBar: React.FC = () => {
 
+
     return (
-        <nav id="navbar" className="navbar-wrapper">
-            <ul className="navbar-links-wrapper">
-                <li className="navbar-item">
-                    <Link to='/'>Home</Link>
-                </li>
-            </ul>
-        </nav>
+        <header>
+            <nav id="landing-navbar" className="mb-50">
+                <Button variant="main" className="ml-20 mr-20">
+                    <NavLink to="/" end>
+                        Home
+                    </NavLink>
+                </Button>
+                <Button variant="main">
+                    <NavLink to="/about" end>
+                        About
+                    </NavLink>
+                </Button>
+            </nav>
+        </header>
     )
 }

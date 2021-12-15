@@ -1,27 +1,18 @@
 //Base imports
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
-import {productsFetch} from "../store/reducers/public/products";
 
 // Screens import
-import {HomeView} from "../screens/HomeView";
-import {ProductItemView} from "../screens/ProductItemView";
-import {useAppDispatch} from "../hooks/useAppDispatch";
+import HomeView from "../screens/HomeView";
 import LandingLayout from "../layouts/LandingLayout";
-
-
+import AboutView from "../screens/AboutView";
+import ProductItemView from "../screens/ProductItemView";
 
 export const PublicRouter: React.FC = () => {
 
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(productsFetch());
-    }, [])
-
     return (
 
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter>
             <Routes>
 
                 <Route path="/" element={<LandingLayout />}>
@@ -34,14 +25,17 @@ export const PublicRouter: React.FC = () => {
                         element={<ProductItemView />}
                     />
                     <Route
+                        path="about"
+                        element={<AboutView />}
+                    />
+                    <Route
                         path="*"
                         element={<HomeView />}
                     />
                 </Route>
 
-
-
             </Routes>
         </BrowserRouter>
     )
 }
+
