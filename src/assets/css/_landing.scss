@@ -46,7 +46,16 @@ main {
 /*  2.1. NavBar */
 
 header {
+    margin: 10px 25px;
+    padding: 10px;
+    border: 1px black solid;
+    border-radius: 5px;
 
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 
@@ -70,7 +79,7 @@ section#home-view-ref {
     border-radius: 5px;
     border: 1px solid #2e1056;
     margin: 10px 10px;
-    box-shadow: 0 0 15px 0 #201331;
+    box-shadow: var(--landing-box-shadow);
     transition: transform .4s;
 
     .product-item__header,
@@ -96,7 +105,7 @@ section#home-view-ref {
     .product-item__preview-image {
         img {
             border-radius: 50%;
-            box-shadow: 0 0 8px 0 #201331;
+            box-shadow: var(--landing-box-shadow);
         }
     }
 

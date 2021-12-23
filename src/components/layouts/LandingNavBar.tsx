@@ -9,7 +9,7 @@ export const LandingNavBar: React.FC = () => {
 
     return (
         <header>
-            <nav id="landing-navbar" className="mb-50">
+            <nav id="landing-navbar">
                 <Button variant="main" className="ml-20 mr-20">
                     <NavLink to="/" end>
                         Home

@@ -14,12 +14,14 @@ export const mainTheme = createTheme({
                 {
                     props: { variant: "main" },
                     style: {
+                        transition: "transform .4s",
                         backgroundColor: "var(--btn-main-color)",
                         padding: "0",
                         color: "var(--link-color)",
                         '&:hover': {
                             backgroundColor: "var(--hover-btn-main-color)",
-                            color: "var(--hover-link-color)"
+                            color: "var(--hover-link-color)",
+                            transform: "translateY(-2px)"
                         },
                         "a": {
                             padding: "5px 20px",
