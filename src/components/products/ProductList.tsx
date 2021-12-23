@@ -1,9 +1,9 @@
 import React, {useCallback, useEffect} from "react";
-import {SortPanel} from "../layouts/SortPanel";
+import {ProductsControlPanel} from "./ProductsControlPanel";
 import {ProductModal} from "./ProductModal";
 import {useAppDispatch} from "../../hooks/useAppDispatch";
 import {productsFetch} from "../../store/reducers/public/products";
-import {Button, CircularProgress, Grid} from "@mui/material";
+import {CircularProgress, Grid} from "@mui/material";
 import {useAppSelector} from "../../hooks/useAppSelector";
 import {API_ERROR, API_INITIAL, API_LOADING, API_SUCCESS} from "../../API/state";
 import {ProductItem} from "./ProductItem";
@@ -32,7 +32,7 @@ export const ProductList: React.FC = () => {
             case API_ERROR:
                 return <span style={{color: "red"}} >Error!</span>
             default:
-                break;
+                return null
         }
     }, [productsList, productsState])
     
@@ -44,12 +44,7 @@ export const ProductList: React.FC = () => {
 
     return (
         <div>
-            <SortPanel />
-            <div>
-                <Button variant="main">
-                    + New product
-                </Button>
-            </div>
+            <ProductsControlPanel />
             <Grid container >
                 {renderList()}
             </Grid>
