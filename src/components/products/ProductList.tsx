@@ -6,6 +6,7 @@ import {productsFetch} from "../../store/reducers/public/products";
 import {Button, CircularProgress, Grid} from "@mui/material";
 import {useAppSelector} from "../../hooks/useAppSelector";
 import {API_ERROR, API_INITIAL, API_LOADING, API_SUCCESS} from "../../API/state";
+import {ProductItem} from "./ProductItem";
 
 
 export const ProductList: React.FC = () => {
@@ -26,12 +27,7 @@ export const ProductList: React.FC = () => {
                 return <CircularProgress />
             case API_SUCCESS:
                 return productsList.map(item => (
-                    <Grid item xl={3} lg={3} md={4} sm={6} xs={12} key={item.id}>
-                        <div className="product-item">
-                            <h4>{item.name}</h4>
-                            <img src={item.imageUrl} alt={item.name}  height={item.size.height} width={item.size.width}/>
-                        </div>
-                    </Grid>
+                    <ProductItem key={item.id} item={item} />
                 ))
             case API_ERROR:
                 return <span style={{color: "red"}} >Error!</span>
@@ -54,7 +50,7 @@ export const ProductList: React.FC = () => {
                     + New product
                 </Button>
             </div>
-            <Grid container>
+            <Grid container >
                 {renderList()}
             </Grid>
             <ProductModal />
