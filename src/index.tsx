@@ -13,7 +13,7 @@ const render = () => ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
-    document.querySelector('body') as HTMLElement,
+    document.querySelector('#root') as HTMLElement,
 );
 
 render();
