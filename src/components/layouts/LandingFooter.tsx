@@ -3,7 +3,9 @@ import React from 'react';
 const LandingFooter = () => {
     return (
         <footer>
-            footer
+            <p>
+                © 2021 Sylviearin. All rights reserved ®
+            </p>
         </footer>
     );
 };

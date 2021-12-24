@@ -9,7 +9,7 @@ export const ProductModal: React.FC<Props> = () => {
 
 
     return (
-        <div>
+        <div style={{display: 'none'}}>
             this will be modal
         </div>
     )

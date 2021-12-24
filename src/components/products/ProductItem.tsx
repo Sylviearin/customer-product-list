@@ -14,11 +14,11 @@ export const ProductItem: React.FC<Props> = ({item}) => {
         <Grid item xl={3} lg={3} md={4} sm={6} xs={12}>
             <div className="product-item">
 
-                <div className="product-item__header">
+                <div className="product-item__header cursor-pointer">
                     <h4>{item.name}</h4>
                 </div>
 
-                <div className="product-item__preview-image">
+                <div className="product-item__preview-image cursor-pointer">
                     <figure>
                         <img src={item.imageUrl} alt={item.name}  height={item.size.height} width={item.size.width}/>
                     </figure>
@@ -34,7 +34,7 @@ export const ProductItem: React.FC<Props> = ({item}) => {
 
                 <div className="product-item__footer">
                     <ul>
-                        <li>
+                        <li className="cursor-pointer">
                             <span><Icon.MessageSquare /></span>
                             <span>{item.comments.length}</span>
                         </li>

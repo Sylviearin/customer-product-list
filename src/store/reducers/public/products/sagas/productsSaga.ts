@@ -26,7 +26,7 @@ function* productsRemoveSaga(action: ProductsRemove) {
         let payload: Product[] = yield select( (state: RootState): Product[] =>
             state.public.products.list.filter(item => item.id !== action.payload)
         );
-        yield localStorage.setItem(storageData, JSON.stringify(payload));
+        localStorage.setItem(storageData, JSON.stringify(payload));
         yield put(productsFetch());
 
     } catch (error: any) {
@@ -42,7 +42,7 @@ function* productsAddSaga(action: ProductsAdd) {
         let payload: Product[] = yield select( (state: RootState): Product[] =>
             state.public.products.list.concat(action.payload)
         );
-        yield localStorage.setItem(storageData, JSON.stringify(payload));
+        localStorage.setItem(storageData, JSON.stringify(payload));
         yield put(productsFetch());
 
     } catch (error: any) {
@@ -64,7 +64,7 @@ function* productsEditSaga(action: ProductsAdd) {
                 }
             )
         );
-        yield localStorage.setItem(storageData, JSON.stringify(payload));
+        localStorage.setItem(storageData, JSON.stringify(payload));
         yield put(productsFetch());
 
     } catch (error: any) {
